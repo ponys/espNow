@@ -30,7 +30,6 @@ void sendData(float h, float t) {
   if (result == ESP_OK) {
     Serial.println("Success ***");
   } else if (result == ESP_ERR_ESPNOW_NOT_INIT) {
-    // How did we get so far!!
     Serial.println("ESPNOW not Init. ***");
   } else if (result == ESP_ERR_ESPNOW_ARG) {
     Serial.println("Invalid Argument ***");
@@ -45,6 +44,7 @@ void sendData(float h, float t) {
   }
 }
 
+// Init ESP Now
 void InitESPNow() {
     if (esp_now_init() != ESP_OK) {
         Serial.println( "*** INITIALIZING ESP-NOW ***");
@@ -65,7 +65,6 @@ bool registerSlave() {
         return false;
     }
 }
-
 
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
     Serial.print("Last Packet Send Status: ");
@@ -89,7 +88,7 @@ void setup() {
 }
 
 void loop() {
-    delay(10000);
+    delay(15000);
     float humidity = dht.readHumidity();
     float temp = dht.readTemperature();
     sendData(humidity, temp);    
