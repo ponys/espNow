@@ -8,7 +8,7 @@ This project requires:
 2 Esp32 boads
 1 DHT-11 sensor
 
-![diagram](docs/diagram.png | width=50)
+![diagram](docs/diagram.png)
 
 The 'master' esp32 will read the data from dht11 at some interval, and then sending to the slave using the esp32-now protocol. 
 Instead of setting the slave in AP mode and broadcasting the MAC address, the master node have it already hardcoded, and it will simply try to connect to the slave, if the slave it's not connected , sending data will fail. Once the slave esp32 start. it will start receiving data from the master and pushing to thingspeak using an HTTP request. 
